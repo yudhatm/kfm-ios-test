@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import CoreLocation
+import Kingfisher
 
 class ViewController: UIViewController, Storyboarded {
 
@@ -15,12 +16,37 @@ class ViewController: UIViewController, Storyboarded {
     var viewModel: MainViewModel!
     var locationManager: CLLocationManager?
     
+    @IBOutlet weak var areaDropdown: UITextField!
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var weatherTempLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var windIcon: UIImageView!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var humidityIcon: UIImageView!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var day1Label: UILabel!
+    @IBOutlet weak var day2Label: UILabel!
+    @IBOutlet weak var day3Label: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupNavigationBar()
         setupLocation()
         
         handleWeatherData()
+    }
+    
+    func setupNavigationBar() {
+        let placeButton = UIBarButtonItem(image: UIImage(named: "place"), style: .plain, target: self, action: #selector(placeButtonTapped))
+        let settingButton = UIBarButtonItem(image: UIImage(named: "settings"), style: .plain, target: self, action: #selector(settingButtonTapped))
+        
+        placeButton.tintColor = .black
+        settingButton.tintColor = .black
+        
+        self.navigationItem.leftBarButtonItem = placeButton
+        self.navigationItem.rightBarButtonItem = settingButton
     }
     
     func setupLocation() {
@@ -40,9 +66,33 @@ class ViewController: UIViewController, Storyboarded {
                 print("Received error: \(error)")
             }
         } receiveValue: { value in
-            print(value.location.region)
+            self.configureCurrentView(data: value)
         }
         .store(in: &bag)
+    }
+    
+    func configureCurrentView(data: Weather) {
+        weatherIcon.kf.setImage(with: URL(string: "https:" + data.current.condition.icon))
+        weatherLabel.text = data.current.condition.text
+        weatherTempLabel.text = viewModel.getTempValue(.celsius, value: data.current.tempCelcius)
+        windLabel.text = "\(data.current.windKph) km/h"
+        humidityLabel.text = "\(data.current.humidity)%"
+        
+        day1Label.text = viewModel.getTodayDate()
+        day2Label.text = viewModel.getDate(data.forecast.forecastDay[1].date)
+        day3Label.text = viewModel.getDate(data.forecast.forecastDay[2].date)
+    }
+    
+    func configureDropdown() {
+        
+    }
+    
+    @objc func placeButtonTapped() {
+        
+    }
+    
+    @objc func settingButtonTapped() {
+        
     }
 }
 

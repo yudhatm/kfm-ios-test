@@ -12,10 +12,6 @@ final class MainViewModel {
     let weatherData = PassthroughSubject<Weather, Error>()
     var weatherObservable: AnyCancellable?
     
-    func getCurrentLocation() {
-        
-    }
-    
     func getForecast(location: String) {
         let param: [String: Any] = ["key": URLs.apiKey, "q": location, "days": 3]
         weatherObservable = NetworkManager.shared.getForecast(parameters: param)
@@ -31,5 +27,33 @@ final class MainViewModel {
             }, receiveValue: { [weak self] value in
                 self?.weatherData.send(value)
             })
+    }
+    
+    func getTempValue(_ temp: UnitTemperature, value: Double) -> String {
+        switch temp {
+        case .celsius:
+            return "\(value)°"
+            
+        case .fahrenheit:
+            return "\(value)°F"
+            
+        default:
+            return "\(value)°"
+        }
+    }
+    
+    func getDate(_ date: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let newDate = df.date(from: date)
+        
+        df.dateFormat = "E, dd MMM"
+        return df.string(from: newDate ?? Date())
+    }
+    
+    func getTodayDate() -> String {
+        let df = DateFormatter()
+        df.dateFormat = "dd MMM"
+        return "Today, " + df.string(from: Date())
     }
 }

@@ -40,6 +40,8 @@ struct WeatherCurrent: Decodable {
     var lastUpdated: String
     var tempCelcius: Double
     var tempFahrenheit: Double
+    var windKph: Double
+    var humidity: Int
     var isDay: Int
     var condition: WeatherCondition
     
@@ -48,6 +50,8 @@ struct WeatherCurrent: Decodable {
         case lastUpdated = "last_updated"
         case tempCelcius = "temp_c"
         case tempFahrenheit = "temp_f"
+        case windKph = "wind_kph"
+        case humidity
         case isDay = "is_day"
         case condition
     }
