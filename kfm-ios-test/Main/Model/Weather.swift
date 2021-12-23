@@ -10,6 +10,7 @@ import Foundation
 struct Weather: Decodable {
     var location: WeatherLocation
     var current: WeatherCurrent
+    var forecast: WeatherForecast
 }
 
 struct WeatherLocation: Decodable {

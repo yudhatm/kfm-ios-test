@@ -17,7 +17,7 @@ final class MainViewModel {
     }
     
     func getForecast(location: String) {
-        let param: [String: Any] = ["key": URLs.apiKey, "q": location]
+        let param: [String: Any] = ["key": URLs.apiKey, "q": location, "days": 3]
         weatherObservable = NetworkManager.shared.getForecast(parameters: param)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
