@@ -9,12 +9,14 @@ import UIKit
 import Combine
 import CoreLocation
 import Kingfisher
+import DropDown
 
 class ViewController: UIViewController, Storyboarded {
 
     var bag: [AnyCancellable] = []
     var viewModel: MainViewModel!
     var locationManager: CLLocationManager?
+    let dropdown = DropDown()
     
     @IBOutlet weak var areaDropdown: UITextField!
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -32,10 +34,13 @@ class ViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        areaDropdown.delegate = self
+        
         setupNavigationBar()
         setupLocation()
         
         handleWeatherData()
+        configureDropdown()
     }
     
     func setupNavigationBar() {
@@ -47,6 +52,9 @@ class ViewController: UIViewController, Storyboarded {
         
         self.navigationItem.leftBarButtonItem = placeButton
         self.navigationItem.rightBarButtonItem = settingButton
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        self.title = "Weather App"
     }
     
     func setupLocation() {
@@ -72,6 +80,7 @@ class ViewController: UIViewController, Storyboarded {
     }
     
     func configureCurrentView(data: Weather) {
+        areaDropdown.text = data.location.name
         weatherIcon.kf.setImage(with: URL(string: "https:" + data.current.condition.icon))
         weatherLabel.text = data.current.condition.text
         weatherTempLabel.text = viewModel.getTempValue(.celsius, value: data.current.tempCelcius)
@@ -84,7 +93,8 @@ class ViewController: UIViewController, Storyboarded {
     }
     
     func configureDropdown() {
-        
+        dropdown.anchorView = areaDropdown
+        dropdown.dataSource = ["Jakarta", "California", "Las Vegas"]
     }
     
     @objc func placeButtonTapped() {
@@ -115,3 +125,9 @@ extension ViewController: CLLocationManagerDelegate {
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        dropdown.show()
+    }
+}
