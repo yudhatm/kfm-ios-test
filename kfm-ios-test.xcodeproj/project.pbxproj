@@ -24,6 +24,8 @@
 		1580286527742C19003F7EB1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1580286427742C19003F7EB1 /* Weather.swift */; };
 		1580286727742DFA003F7EB1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1580286627742DFA003F7EB1 /* MainViewModel.swift */; };
 		1580286927746A02003F7EB1 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1580286827746A02003F7EB1 /* WeatherForecast.swift */; };
+		1580286C277560C7003F7EB1 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1580286B277560C6003F7EB1 /* WeatherCell.xib */; };
+		1580286E27756192003F7EB1 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1580286D27756192003F7EB1 /* WeatherCell.swift */; };
 		66F5D3EB5A80C18A647984BF /* Pods_kfm_ios_testTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB67503AA8DC0307623380EA /* Pods_kfm_ios_testTests.framework */; };
 		751901EEE6A469C52ABD84E2 /* Pods_kfm_ios_test_kfm_ios_testUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B95248BD17BB55FE6B1CAA15 /* Pods_kfm_ios_test_kfm_ios_testUITests.framework */; };
 		995D92F1CA1B587EC05D622D /* Pods_kfm_ios_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182159D90E986157C8B6C0CE /* Pods_kfm_ios_test.framework */; };
@@ -68,6 +70,8 @@
 		1580286427742C19003F7EB1 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		1580286627742DFA003F7EB1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1580286827746A02003F7EB1 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
+		1580286B277560C6003F7EB1 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		1580286D27756192003F7EB1 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		182159D90E986157C8B6C0CE /* Pods_kfm_ios_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kfm_ios_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46022BCBA33DB300E0130A43 /* Pods-kfm-ios-testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kfm-ios-testTests.release.xcconfig"; path = "Target Support Files/Pods-kfm-ios-testTests/Pods-kfm-ios-testTests.release.xcconfig"; sourceTree = "<group>"; };
 		474080B710CF915D9F760914 /* Pods-kfm-ios-test-kfm-ios-testUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kfm-ios-test-kfm-ios-testUITests.release.xcconfig"; path = "Target Support Files/Pods-kfm-ios-test-kfm-ios-testUITests/Pods-kfm-ios-test-kfm-ios-testUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -199,7 +203,9 @@
 		15802859277424E0003F7EB1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1580286A277560AF003F7EB1 /* XIB */,
 				158028272773239D003F7EB1 /* ViewController.swift */,
+				1580286D27756192003F7EB1 /* WeatherCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +241,14 @@
 				1580286227742984003F7EB1 /* NetworkManager.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		1580286A277560AF003F7EB1 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				1580286B277560C6003F7EB1 /* WeatherCell.xib */,
+			);
+			path = XIB;
 			sourceTree = "<group>";
 		};
 		7C0DC7C18D2D2A33D5D93578 /* Frameworks */ = {
@@ -356,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1580286C277560C7003F7EB1 /* WeatherCell.xib in Resources */,
 				15802830277323A5003F7EB1 /* LaunchScreen.storyboard in Resources */,
 				1580282D277323A5003F7EB1 /* Assets.xcassets in Resources */,
 				1580282B2773239D003F7EB1 /* Main.storyboard in Resources */,
@@ -494,6 +509,7 @@
 				1580286727742DFA003F7EB1 /* MainViewModel.swift in Sources */,
 				1580286327742984003F7EB1 /* NetworkManager.swift in Sources */,
 				1580286927746A02003F7EB1 /* WeatherForecast.swift in Sources */,
+				1580286E27756192003F7EB1 /* WeatherCell.swift in Sources */,
 				15802857277424AE003F7EB1 /* Storyboarded.swift in Sources */,
 				158028242773239D003F7EB1 /* AppDelegate.swift in Sources */,
 				158028262773239D003F7EB1 /* SceneDelegate.swift in Sources */,

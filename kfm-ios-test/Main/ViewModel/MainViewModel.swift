@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 final class MainViewModel {
     let weatherData = PassthroughSubject<Weather, Error>()
@@ -55,5 +56,31 @@ final class MainViewModel {
         let df = DateFormatter()
         df.dateFormat = "dd MMM"
         return "Today, " + df.string(from: Date())
+    }
+    
+    func getTime(_ date: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        let newDate = df.date(from: date)
+        
+        df.dateFormat = "HH:mm"
+        return df.string(from: newDate ?? Date())
+    }
+    
+    func getCurrentTime(_ date: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        let newDate = df.date(from: date)
+        
+        df.dateFormat = "dd MMM yyyy, HH:mm"
+        return df.string(from: newDate ?? Date())
+    }
+    
+    func changeBackgroundColor(isDay: Bool) -> UIColor {
+        if isDay {
+            return UIColor(red: 255/255, green: 219/255, blue: 0/255, alpha: 1)
+        } else {
+            return UIColor(red: 102/255, green: 102/255, blue: 153/255, alpha: 1)
+        }
     }
 }

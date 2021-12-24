@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cYE-45-wAo" customClass="WeatherCell" customModule="kfm_ios_test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="126" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oBx-rn-y7S">
+                <rect key="frame" x="0.0" y="0.0" width="126" height="175"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FH-OO-r4w">
+                        <rect key="frame" x="32" y="12" width="62" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="roH-aR-jfO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V1s-ZZ-pdY">
+                        <rect key="frame" x="25" y="44" width="76" height="76"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="V1s-ZZ-pdY" secondAttribute="height" multiplier="1:1" id="nBT-Mo-YG4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAz-6F-08F">
+                        <rect key="frame" x="43.5" y="132" width="39.5" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="A6n-7t-1CX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="V1s-ZZ-pdY" secondAttribute="trailing" constant="25" id="8vd-Qc-AH6"/>
+                    <constraint firstItem="V1s-ZZ-pdY" firstAttribute="centerX" secondItem="oBx-rn-y7S" secondAttribute="centerX" id="FgZ-Xo-VG8"/>
+                    <constraint firstItem="4FH-OO-r4w" firstAttribute="top" secondItem="oBx-rn-y7S" secondAttribute="top" constant="12" id="JoP-CI-iWx"/>
+                    <constraint firstItem="HAz-6F-08F" firstAttribute="centerX" secondItem="oBx-rn-y7S" secondAttribute="centerX" id="ciw-iN-URb"/>
+                    <constraint firstItem="V1s-ZZ-pdY" firstAttribute="leading" secondItem="oBx-rn-y7S" secondAttribute="leading" constant="25" id="im3-5u-yQv"/>
+                    <constraint firstAttribute="bottom" secondItem="HAz-6F-08F" secondAttribute="bottom" constant="12" id="raQ-Ab-nRU"/>
+                    <constraint firstItem="4FH-OO-r4w" firstAttribute="centerX" secondItem="oBx-rn-y7S" secondAttribute="centerX" id="sLC-Gb-kid"/>
+                    <constraint firstItem="HAz-6F-08F" firstAttribute="top" secondItem="V1s-ZZ-pdY" secondAttribute="bottom" constant="12" id="tKc-C6-17f"/>
+                    <constraint firstItem="V1s-ZZ-pdY" firstAttribute="top" secondItem="4FH-OO-r4w" secondAttribute="bottom" constant="12" id="xLr-xm-EY9"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="126" height="175"/>
+            <connections>
+                <outlet property="tempLabel" destination="HAz-6F-08F" id="WCC-pc-BKv"/>
+                <outlet property="timeLabel" destination="4FH-OO-r4w" id="pfJ-Yr-2Lq"/>
+                <outlet property="weatherIcon" destination="V1s-ZZ-pdY" id="kVZ-l9-cbF"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="101.45089285714285"/>
+        </collectionViewCell>
+    </objects>
+</document>
